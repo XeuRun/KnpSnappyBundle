@@ -30,6 +30,9 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->scalarNode('temporary_folder')->end()
+                ->arrayNode('allow_exit_codes')
+                    ->prototype('scalar')->end()
+                ->end()
                 ->arrayNode('pdf')
                     ->addDefaultsIfNotSet()
                     ->children()

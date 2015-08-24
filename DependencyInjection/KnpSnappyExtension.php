@@ -30,6 +30,10 @@ class KnpSnappyExtension extends Extension
                 $container->findDefinition('knp_snappy.pdf.internal_generator')
                     ->addMethodCall('setTemporaryFolder', array($config['temporary_folder']));
             }
+            if (!empty($config['allow_exit_codes'])) {
+                $container->findDefinition('knp_snappy.pdf.internal_generator')
+                    ->addMethodCall('setAllowExitCodes', array($config['allow_exit_codes']));
+            }
         }
 
         if ($config['image']['enabled']) {
@@ -40,6 +44,10 @@ class KnpSnappyExtension extends Extension
             if (!empty($config['temporary_folder'])) {
                 $container->findDefinition('knp_snappy.image.internal_generator')
                     ->addMethodCall('setTemporaryFolder', array($config['temporary_folder']));
+            }
+            if (!empty($config['allow_exit_codes'])) {
+                $container->findDefinition('knp_snappy.image.internal_generator')
+                    ->addMethodCall('setAllowExitCodes', array($config['allow_exit_codes']));
             }
         }
     }
